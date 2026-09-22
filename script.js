@@ -429,14 +429,14 @@ function renderOrders() {
 
         table.innerHTML += `
         <tr>
-            <td><strong>#${order.bill}</strong></td>
-            <td>${order.time}</td>
-            <td><span class="table-badge">${tableDisplay}</span></td>
-            <td>${itemText}</td>
-            <td><strong>₹${order.amount}</strong></td>
-            <td>${paymentBadge}</td>
-            <td>${payTimeDisplay}</td>
-            <td>
+            <td class="col-bill"><strong>#${order.bill}</strong></td>
+            <td class="col-time">${order.time}</td>
+            <td class="col-table"><span class="table-badge">${tableDisplay}</span></td>
+            <td class="col-items">${itemText}</td>
+            <td class="col-amount"><strong>₹${order.amount}</strong></td>
+            <td class="col-payment">${paymentBadge}</td>
+            <td class="col-paytime">${payTimeDisplay}</td>
+            <td class="col-action">
                 <button class="print-btn" onclick='printBill(${JSON.stringify(order)})'>
                     <img src="hari.png" class="hari-icon-btn" alt="icon"> Print
                 </button>
@@ -694,12 +694,12 @@ function renderDailySummary() {
         let serialNo = dailySummary.length - index;
         table.innerHTML += `
         <tr>
-            <td><strong>#${serialNo}</strong></td>
-            <td><strong>${item.date}</strong></td>
-            <td>${item.time}</td>
-            <td><strong style="color: #16a34a;">₹${item.cash}</strong></td>
-            <td><strong style="color: #2563eb;">₹${item.online}</strong></td>
-            <td><strong style="color: #7c3aed; font-size: 15px;">₹${item.grandTotal}</strong></td>
+            <td class="col-summary-id"><strong>#${serialNo}</strong></td>
+            <td class="col-summary-date"><strong>${item.date}</strong></td>
+            <td class="col-summary-time">${item.time}</td>
+            <td class="col-summary-cash"><strong style="color: #16a34a;">₹${item.cash}</strong></td>
+            <td class="col-summary-online"><strong style="color: #2563eb;">₹${item.online}</strong></td>
+            <td class="col-summary-total"><strong style="color: #7c3aed; font-size: 15px;">₹${item.grandTotal}</strong></td>
         </tr>
         `;
     });
