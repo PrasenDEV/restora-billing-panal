@@ -547,7 +547,6 @@ function renderTableCards() {
                 <div class="table-status-wrap">
                     <span class="table-card-status available">Available</span>
                 </div>
-                <p class="table-empty-hint">No active order</p>
                 <button class="table-select-btn" type="button" onclick="event.stopPropagation(); selectTable('Table ${i}')">
                     Select Table
                 </button>
@@ -587,9 +586,6 @@ function settleTableOrder(tableNum, payment) {
     }
 
     localStorage.setItem("borJhauzOrders", JSON.stringify(orders));
-
-    // Print bill receipt
-    printBill(order);
 
     // Clear active order for this table
     delete activeTables[tableNum];
