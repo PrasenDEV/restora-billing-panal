@@ -95,26 +95,33 @@ function clearCart() {
 function renderCart() {
     const cartBox = document.getElementById("cart");
     const cartTotalElem = document.getElementById("cartTotal");
+    const breakdownBox = document.getElementById("tableOrderBreakdown");
+    const placeOrderBtn = document.querySelector(".place-order-btn");
+    const tableInput = document.getElementById("tableNo");
 
     if (cart.length === 0) {
         cartBox.innerHTML = '<div class="empty">No items added</div>';
-        cartTotalElem.innerText = "0";
+        if (cartTotalElem) cartTotalElem.innerText = "0";
+        if (breakdownBox) breakdownBox.innerHTML = "";
+        if (placeOrderBtn) placeOrderBtn.innerText = "Place Order";
         return;
     }
 
     let html = "";
     let total = 0;
+    let totalQty = 0;
 
     cart.forEach((item, index) => {
         let subtotal = item.price * item.qty;
         total += subtotal;
+        totalQty += item.qty;
 
         html += `
         <div class="cart-item">
             <div>
                 <strong>${item.name}</strong>
                 <br>
-                <span style="color:#666; font-size:13px;">₹${item.price} × ${item.qty} = ₹${subtotal}</span>
+                <span style="color:#78350f; font-size:13px; font-weight:600;">₹${item.price} × ${item.qty} = ₹${subtotal}</span>
             </div>
             <div class="qty">
                 <button class="minus" onclick="changeQty(${index}, -1)">−</button>
@@ -126,6 +133,41 @@ function renderCart() {
     });
 
     cartBox.innerHTML = html;
+    if (cartTotalElem) cartTotalElem.innerText = total;
+
+    // Check if the selected table already has existing items
+    if (breakdownBox) {
+        let rawVal = tableInput ? tableInput.value.trim() : "";
+        let match = rawVal.match(/\d+/);
+        let tableNum = match ? parseInt(match[0], 10) : null;
+
+        if (tableNum && activeTables[tableNum] && activeTables[tableNum].total) {
+            let prevTotal = activeTables[tableNum].total;
+            let finalTotal = prevTotal + total;
+            breakdownBox.innerHTML = `
+                <div style="font-size: 12px; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #fdba74; color: #78350f; font-weight: 600;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 2px;">
+                        <span>Table ${tableNum} (Current Bill):</span>
+                        <span>₹${prevTotal}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; color: #c2410c; font-weight: 800; font-size: 13px;">
+                        <span>Total After This Order:</span>
+                        <span>₹${finalTotal}</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            breakdownBox.innerHTML = `
+                <div style="font-size: 12px; margin-top: 4px; color: #78350f; text-align: right;">
+                    ${totalQty} item(s) in bill
+                </div>
+            `;
+        }
+    }
+
+    if (placeOrderBtn) {
+        placeOrderBtn.innerText = `Place Order • ₹${total}`;
+    }
 }
 
 // --- ORDER PLACEMENT TO TABLE ---
@@ -470,6 +512,8 @@ function selectTable(tableName) {
             selectedCard.classList.add("active-table");
         }
     }
+
+    renderCart();
 
     // Smooth scroll to bill section on smaller screens
     const billSec = document.querySelector(".bill-section");
