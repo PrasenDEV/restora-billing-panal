@@ -770,9 +770,10 @@ table {
 }
 
 th, td {
-    padding: 11px;
+    padding: 11px 12px;
     border-bottom: 1px solid #f5ebe1;
     text-align: left;
+    vertical-align: middle;
 }
 
 th {
@@ -780,6 +781,97 @@ th {
     color: #78350f;
     font-weight: 700;
     border-bottom: 2px solid #fed7aa;
+}
+
+/* FIXED TABLE COLUMN WIDTHS */
+.orders-table, .summary-table {
+    min-width: 800px;
+}
+
+.col-bill {
+    width: 75px;
+    min-width: 75px;
+    white-space: nowrap;
+}
+
+.col-time {
+    width: 95px;
+    min-width: 95px;
+    white-space: nowrap;
+}
+
+.col-table {
+    width: 115px;
+    min-width: 115px;
+    white-space: nowrap;
+}
+
+.col-items {
+    min-width: 220px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.col-amount {
+    width: 95px;
+    min-width: 95px;
+    white-space: nowrap;
+}
+
+.col-payment {
+    width: 95px;
+    min-width: 95px;
+    white-space: nowrap;
+}
+
+.col-paytime {
+    width: 105px;
+    min-width: 105px;
+    white-space: nowrap;
+}
+
+.col-action {
+    width: 95px;
+    min-width: 95px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* DAILY SUMMARY TABLE COLUMNS */
+.col-summary-id {
+    width: 65px;
+    min-width: 65px;
+    white-space: nowrap;
+}
+
+.col-summary-date {
+    width: 120px;
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.col-summary-time {
+    width: 95px;
+    min-width: 95px;
+    white-space: nowrap;
+}
+
+.col-summary-cash {
+    width: 140px;
+    min-width: 130px;
+    white-space: nowrap;
+}
+
+.col-summary-online {
+    width: 140px;
+    min-width: 130px;
+    white-space: nowrap;
+}
+
+.col-summary-total {
+    width: 140px;
+    min-width: 130px;
+    white-space: nowrap;
 }
 
 .print-btn {
@@ -802,14 +894,16 @@ th {
 }
 
 .table-badge {
-    background: #fef3c7;
-    color: #92400e;
-    font-weight: 600;
-    font-size: 12px;
-    padding: 3px 8px;
-    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 8px;
     display: inline-block;
-    border: 1px solid #fde68a;
+    border: 1.5px solid #e7d8cb;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    letter-spacing: 0.3px;
 }
 
 .empty {
