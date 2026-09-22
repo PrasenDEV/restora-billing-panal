@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bor Jhauz Restaurant - Billing System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -121,17 +121,17 @@
         </div>
 
         <div style="overflow-x:auto;">
-            <table>
+            <table class="orders-table">
                 <thead>
                     <tr>
-                        <th>Bill</th>
-                        <th>Time</th>
-                        <th>Table</th>
-                        <th>Items</th>
-                        <th>Amount</th>
-                        <th>Payment</th>
-                        <th>Pay Time</th>
-                        <th>Action</th>
+                        <th class="col-bill">Bill</th>
+                        <th class="col-time">Time</th>
+                        <th class="col-table">Table</th>
+                        <th class="col-items">Items</th>
+                        <th class="col-amount">Amount</th>
+                        <th class="col-payment">Payment</th>
+                        <th class="col-paytime">Pay Time</th>
+                        <th class="col-action">Action</th>
                     </tr>
                 </thead>
                 <tbody id="orderHistory">
@@ -148,15 +148,15 @@
         </div>
 
         <div style="overflow-x:auto;">
-            <table>
+            <table class="summary-table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Cash Collection</th>
-                        <th>Online Collection</th>
-                        <th>Total Collection</th>
+                        <th class="col-summary-id">#</th>
+                        <th class="col-summary-date">Date</th>
+                        <th class="col-summary-time">Time</th>
+                        <th class="col-summary-cash">Cash Collection</th>
+                        <th class="col-summary-online">Online Collection</th>
+                        <th class="col-summary-total">Total Collection</th>
                     </tr>
                 </thead>
                 <tbody id="dailySummaryHistory">
@@ -168,8 +168,8 @@
 
 </div>
 
-<script src="data.js"></script>
-<script src="script.js"></script>
+<script src="data.js?v=3"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>
 
